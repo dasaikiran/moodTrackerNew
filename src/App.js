@@ -2385,10 +2385,16 @@ class App extends Component {
   }
 
   getCalenderReport = () => {
-    const {reportCalenderMonth, calenderList, emojisListNew} = this.state
+    const {
+      reportCalenderMonth,
+      month,
+      homeActive,
+      calenderList,
+      emojisListNew,
+    } = this.state
     console.log(reportCalenderMonth)
-
-    const monthDatesList = calenderList[reportCalenderMonth - 1].dates
+    const calenderMonth = homeActive ? month : reportCalenderMonth
+    const monthDatesList = calenderList[calenderMonth - 1].dates
     console.log(monthDatesList)
 
     let veryHappyCount = 0
@@ -2485,7 +2491,10 @@ class App extends Component {
       {
         month,
       },
-      this.getNameDayCount,
+      () => {
+        this.getNameDayCount()
+        this.getCalenderReport()
+      },
     )
   }
 
@@ -2644,6 +2653,7 @@ class App extends Component {
       month,
       emojisListNew,
       calenderReportList,
+      reportCalenderMonth,
     } = this.state
     return (
       <MoodTrackerContext.Provider
@@ -2670,6 +2680,7 @@ class App extends Component {
           onRightArrowClick: this.onRightArrowClick,
           onReportCalenderChange: this.onReportCalenderChange,
           calenderReportList,
+          reportCalenderMonth,
         }}
       >
         <Switch>

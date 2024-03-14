@@ -19,6 +19,7 @@ const Reports = () => (
         emojisListNew,
         onReportCalenderChange,
         calenderReportList,
+        reportCalenderMonth,
       } = value
       console.log(calenderReportList[0])
       const a = calenderList[0] && calenderList[0].emojiUrl
@@ -35,7 +36,7 @@ const Reports = () => (
               data-testid="emojiReportHeading"
               className="emoji-report-heading"
             >
-              Overall Emoji Report
+              Overall Emojis Reports
             </h1>
             <ul data-testid="emojiReportUl" className="emoji-report-ul">
               {emojisListNew.map(item => (
@@ -68,6 +69,7 @@ const Reports = () => (
                 Monthly Reports
               </h1>
               <select
+                value={reportCalenderMonth}
                 onChange={onReportCalenderChange}
                 className="calender-select"
                 data-testid="calenderSelect"
