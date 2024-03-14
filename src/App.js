@@ -2393,7 +2393,7 @@ class App extends Component {
 
     let veryHappyCount = 0
     let happyCount = 0
-    let neutralCount = 0 // Fixed variable name
+    let neutralCount = 0
     let sadCount = 0
     let verySadCount = 0
 
@@ -2489,7 +2489,7 @@ class App extends Component {
     )
   }
 
-  getNameDayCount = async () => {
+  getNameDayCount = () => {
     const {calenderList, activeEmojiName, activeDay, month} = this.state
 
     let count = 0
@@ -2504,7 +2504,7 @@ class App extends Component {
       }
     })
     const ans = `0${count}`
-    await this.setState({
+    this.setState({
       nameDayCount: ans,
     })
   }
@@ -2515,7 +2515,7 @@ class App extends Component {
     })
   }
 
-  onDateLiClick = async (id, month) => {
+  onDateLiClick = (id, month) => {
     const {calenderList, activeEmoji, emojisListNew} = this.state
     const datesList = calenderList[month - 1].dates
     const liObj = datesList.find(item => item.id === id)
@@ -2560,7 +2560,7 @@ class App extends Component {
     )
   }
 
-  onUpdateEmojiList = async (activeEmoji, pos, diffEmoji) => {
+  onUpdateEmojiList = (activeEmoji, pos, diffEmoji) => {
     console.log('onUpdateEmojisList')
 
     const {emojisListNew} = this.state
@@ -2595,7 +2595,7 @@ class App extends Component {
         return item
       })
     }
-    await this.setState({
+    this.setState({
       emojisListNew: newList,
     })
   }
