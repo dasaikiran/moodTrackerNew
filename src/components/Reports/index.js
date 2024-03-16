@@ -91,7 +91,7 @@ const Reports = () => (
               margin={{top: 20, right: 30, left: 20, bottom: 5}}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="imageUrl" type="category" />
+              <XAxis dataKey="emojiUrl" type="category" />
               <YAxis />
               <Tooltip />
               <Legend />
@@ -99,7 +99,7 @@ const Reports = () => (
                 {calenderReportList.map((entry, index) => (
                   <img
                     key={entry.id}
-                    src={entry.imageUrl}
+                    src={entry.emojiUrl}
                     alt={`emoji-${index}`}
                     style={{width: '20px', height: '20px', marginRight: '10px'}}
                   />
