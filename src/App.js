@@ -2529,14 +2529,16 @@ class App extends Component {
     const datesList = calenderList[month - 1].dates
     const liObj = datesList.find(item => item.id === id)
     const actEmojiObj = emojisListNew.find(item => item.id === activeEmoji)
+
     let newObj
     let pos
     let difEmojiName
-    if (liObj.emojiName === '' || liObj.emojiName !== actEmojiObj.emojiName) {
+
+    if (liObj.emojiName === '' || liObj.emojiName !== actEmojiObj?.emojiName) {
       newObj = {
         ...liObj,
-        emojiUrl: actEmojiObj.emojiUrl,
-        emojiName: actEmojiObj.emojiName,
+        emojiUrl: actEmojiObj?.emojiUrl || '',
+        emojiName: actEmojiObj?.emojiName || '',
       }
       if (liObj.emojiName !== '') {
         pos = 'nota'
@@ -2544,19 +2546,19 @@ class App extends Component {
       } else {
         pos = 'plus'
       }
-    } else if (liObj.emojiName === actEmojiObj.emojiName) {
+    } else if (liObj.emojiName === actEmojiObj?.emojiName) {
       newObj = {...liObj, emojiUrl: '', emojiName: ''}
       pos = 'minus'
     }
-    const newDatesList = datesList.map(item => {
-      if (item.id === id) {
-        return newObj
-      }
-      return item
-    })
+
+    const newDatesList = datesList.map(item => (item.id === id ? newObj : item))
     const newMonth = {...calenderList[month - 1], dates: newDatesList}
-    calenderList[month - 1] = newMonth
-    const newCalenderList = calenderList
+    const newCalenderList = [
+      ...calenderList.slice(0, month - 1),
+      newMonth,
+      ...calenderList.slice(month),
+    ]
+
     this.setState(
       {
         calenderList: newCalenderList,
