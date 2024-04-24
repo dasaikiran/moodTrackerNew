@@ -6,6 +6,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from 'recharts'
 import './index.css'
 import Header from '../Header'
@@ -21,9 +22,6 @@ const Reports = () => (
         calenderReportList,
         reportCalenderMonth,
       } = value
-      console.log(calenderReportList[0])
-      const a = calenderList[0] && calenderList[0].emojiUrl
-      console.log('emoji akkada mama', a)
 
       return (
         <>
@@ -81,31 +79,34 @@ const Reports = () => (
                 ))}
               </select>
             </div>
-            {console.log(calenderReportList[0])}
 
-            <BarChart
-              className="bar-chart"
-              width={350}
-              height={250}
-              data={calenderReportList}
-              margin={{top: 20, right: 30, left: 20, bottom: 5}}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="emojiUrl" type="category" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="count" fill="#8884d8" barSize={30}>
-                {calenderReportList.map((entry, index) => (
-                  <img
-                    key={entry.id}
-                    src={entry.emojiUrl}
-                    alt={`emoji-${index}`}
-                    style={{width: '20px', height: '20px', marginRight: '10px'}}
-                  />
-                ))}
-              </Bar>
-            </BarChart>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart
+                className="bar-chart"
+                data={calenderReportList}
+                margin={{top: 20, right: 30, left: 20, bottom: 5}}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="emojiName" type="category" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="count" fill="#8884d8" barSize={30}>
+                  {calenderReportList.map(entry => (
+                    <text
+                      key={`emoji-${entry.id}`}
+                      x="20"
+                      y={(calenderReportList.indexOf(entry) + 1) * 30}
+                      dy={-10}
+                      textAnchor="end"
+                      fill="#8884d8"
+                    >
+                      {entry.emojiName}
+                    </text>
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </>
       )

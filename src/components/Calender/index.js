@@ -78,7 +78,6 @@ class Calender extends Component {
                           <p data-testid="datesPara" className="dates-para">
                             {date}
                           </p>
-                          {console.log(typeof item.emojiName, typeof item.date)}
                           {item.emojiName !== '' ? (
                             <img
                               className="dates-emoji"

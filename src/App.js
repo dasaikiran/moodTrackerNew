@@ -2392,10 +2392,8 @@ class App extends Component {
       calenderList,
       emojisListNew,
     } = this.state
-    console.log(reportCalenderMonth)
     const calenderMonth = homeActive ? month : reportCalenderMonth
     const monthDatesList = calenderList[calenderMonth - 1].dates
-    console.log(monthDatesList)
 
     let veryHappyCount = 0
     let happyCount = 0
@@ -2417,9 +2415,6 @@ class App extends Component {
       }
     })
 
-    console.log('hello report list')
-    console.log(happyCount, neutralCount)
-
     const newList = emojisListNew.map(item => {
       let count
 
@@ -2439,6 +2434,7 @@ class App extends Component {
         id: item.id,
         count,
         emojiUrl: item.emojiUrl,
+        emojiName: item.emojiName,
       }
     })
 
@@ -2472,14 +2468,11 @@ class App extends Component {
   }
 
   createEmojisList = () => {
-    console.log('onCreateEmojisList')
     const {emojisListNew} = this.state
     const newList = emojisListNew.map(item => ({
       ...item,
       count: 0,
     }))
-    console.log(newList)
-    console.log('mama')
     this.setState({
       emojisListNew: newList,
     })
@@ -2500,7 +2493,6 @@ class App extends Component {
 
   getNameDayCount = () => {
     const {calenderList, activeEmojiName, activeDay, month} = this.state
-
     let count = 0
     const datesList = calenderList[month - 1].dates
     datesList.forEach(item => {
@@ -2572,11 +2564,7 @@ class App extends Component {
   }
 
   onUpdateEmojiList = (activeEmoji, pos, diffEmoji) => {
-    console.log('onUpdateEmojisList')
-
     const {emojisListNew} = this.state
-    console.log(emojisListNew)
-    console.log('inMAMA')
     let newList = emojisListNew.map(item => {
       if (item.id === activeEmoji) {
         let val

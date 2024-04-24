@@ -8,6 +8,10 @@
   background-position: center;
 }
 
+text{
+  font-size: 11px;
+}
+
 .emoji-report-heading {
   width: 159px;
   height: 48px;
