@@ -8,14 +8,13 @@
   },
   "dependencies": {
     "@testing-library/jest-dom": "5.11.9",
-    "@testing-library/react": "11.2.5",
     "@testing-library/user-event": "12.6.2",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.3",
     "chalk": "4.1.0",
     "enzyme": "3.11.0",
-    "msw": "0.39.2",
     "history": "5.0.1",
     "js-cookie": "3.0.1",
+    "msw": "0.39.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "4.12.0",
@@ -25,6 +24,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "@testing-library/react": "12.1.5",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-prettier": "3.3.1",
